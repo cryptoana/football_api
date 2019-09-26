@@ -20,4 +20,12 @@ router.post('/team', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/team/:id', (req, res, next) => {
+  Team.findByPk(req.params.id) 
+    .then((teamId) => {
+      res.status(200).send(teamId)
+    })
+    .catch(next)
+})
+
 module.exports = router
