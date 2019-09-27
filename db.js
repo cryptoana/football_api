@@ -6,7 +6,7 @@ const databaseURL = process.env.DATABASE_URL || 'postgres://postgres:secret@loca
 const db = new Sequelize(databaseURL)
 
 db
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => console.log('DB updated'))
   .catch(console.error)
 
