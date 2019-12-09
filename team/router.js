@@ -3,6 +3,7 @@ const Team = require('./model')
 
 const router = new Router()
 
+// read teams
 router.get('/team', (req, res, next) => {
     Team.findAll()
       .then((teams) => {
@@ -11,6 +12,7 @@ router.get('/team', (req, res, next) => {
       .catch(console.error)
 })
 
+// create team
 router.post('/team', (req, res, next) => {
   Team.create(req.body)
     .then((team) => {
@@ -19,6 +21,7 @@ router.post('/team', (req, res, next) => {
     .catch(next)
 })
 
+// read one team
 router.get('/team/:id', (req, res, next) => {
   Team.findByPk(req.params.id) 
     .then((teamId) => {
@@ -26,23 +29,5 @@ router.get('/team/:id', (req, res, next) => {
     })
     .catch(next)
 })
-
-// router.delete('/team/:id', (req, res, next) => {
-//   Team.findAll(req.body)
-    
-//     .then((team) => {
-//       res.status(200).send(team)
-//     })
-//     .catch(next)
-// })
-
-// app.delete('/users/:userId/tasks', (req, res, next) => {
-//   Task.findAll({where: {userId: req.params.userId}})
-//   .then(Tasks => Tasks.map((task) => 
-//     task.destroy(req.body)
-//   ))
-//   .then(task => res.status(204).json(task))
-//   .catch(next)
-// })
 
 module.exports = router
